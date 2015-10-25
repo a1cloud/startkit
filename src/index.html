@@ -1,11 +1,14 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="app" lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Angular App</title>
+  <base href="/">
   <link href="/css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<div ng-controller="HomeCtrl">
-  {{name}}-
+<div class="container">
+  <ui-view></ui-view>
 </div>
 <script src="//cdn.bootcss.com/angular.js/1.4.7/angular.min.js"></script>
 <script src="//cdn.bootcss.com/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>

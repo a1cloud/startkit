@@ -6,10 +6,10 @@ var DEBUG = !argv.release;
 
 module.exports = {
   //entry: './src/app/app.module.js',
-  entry:[
+  entry: [
     './src/app/app.js'
   ],
-  watch:true,
+  watch: true,
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "js/bundle.js"
@@ -22,12 +22,13 @@ module.exports = {
     reasons: DEBUG
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js','.module.js','.routes.js']
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.module.js', '.routes.js']
   },
   externals: [
     {
       'lodash': '_',
-      'angular': 'angular'
+      'angular': 'angular',
+      'angular-ui-router':'"ui.router"'
     }
   ],
   plugins: [
@@ -43,6 +44,9 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel'
+      }, {
+        test: /\.html$/,
+        loader: 'raw'
       }
     ]
   }

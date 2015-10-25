@@ -1,11 +1,16 @@
-import angualr from 'angular';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import routes from './routes';
+import controllers from './controllers';
+import services from './services';
+import directives from './directives';
 
-angualr.module('app', ['ui.router'])
-  .controller('HomeCtrl', ($scope)=> {
-    $scope.name = '测试项目';
-  });
-
-
-
-
-
+/**
+ * 主程序，自动加载controllers,services
+ */
+angular.module('app', [
+  uiRouter,
+  services,
+  controllers,
+  directives
+]).config(routes);

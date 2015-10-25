@@ -19,7 +19,7 @@ let started = false;
  * 清理build资源
  */
 gulp.task('clean', (callback)=> {
-  del(['./build'], {force: true}, callback)
+  del(['build/**/*.*'], callback)
 });
 
 /**
@@ -78,14 +78,13 @@ gulp.task('server', function () {
 
 gulp.task('watch', ()=> {
 
-  gulp.watch('build/**/*.*').on('change', browserSync.reload);
   gulp.watch('src/assets/img/**/*.*', ['img']);
   gulp.watch('src/index.html', ['html']);
-  gulp.watch('src/assets/libs/**/*.*', ['libs']);
   gulp.watch('src/assets/js/**/*.*', ['js']);
   gulp.watch(["src/assets/less/**/*.*"], ["less"]);
   gulp.watch(["src/assets/css/**/*.*"], ["css"]);
-  gulp.watch(["src/app/**"], ["bundle"]);
+  gulp.watch(["src/app/**/*"], ["bundle"]);
+  gulp.watch('build/**/*.*').on('change', browserSync.reload);
 
 });
 
@@ -113,12 +112,6 @@ gulp.task('js', ()=> {
   return gulp.src(['src/assets/js/**/*.*'])
     .pipe(size())
     .pipe(gulp.dest('build/js'));
-});
-
-gulp.task('libs', ()=> {
-  return gulp.src(['src/assets/libs/**/*.*'])
-    .pipe(size())
-    .pipe(gulp.dest('build/libs'));
 });
 
 //style less
@@ -153,4 +146,4 @@ gulp.task('default', ['dev']);
 gulp.task('dev', ['build', 'watch', 'server']);
 
 /**build*/
-gulp.task("build", ['clean', 'img', 'libs', 'css', 'html', 'bundle']);
+gulp.task("build", ['clean', 'img', 'css', 'html', 'bundle']);
