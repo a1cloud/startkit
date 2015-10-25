@@ -82,6 +82,7 @@ gulp.task('watch', ()=> {
   gulp.watch('src/assets/img/**/*.*', ['img']);
   gulp.watch('src/index.html', ['html']);
   gulp.watch('src/assets/libs/**/*.*', ['libs']);
+  gulp.watch('src/assets/js/**/*.*', ['js']);
   gulp.watch(["src/assets/less/**/*.*"], ["less"]);
   gulp.watch(["src/assets/css/**/*.*"], ["css"]);
   gulp.watch(["src/app/**"], ["bundle"]);
@@ -102,8 +103,16 @@ gulp.task('img', ()=> {
 
 gulp.task('css', ()=> {
   return gulp.src(['src/assets/css/**/*.*'])
+    .pipe(minifyCss())
+    .pipe(less())
     .pipe(size())
     .pipe(gulp.dest('build/css'));
+});
+
+gulp.task('js', ()=> {
+  return gulp.src(['src/assets/js/**/*.*'])
+    .pipe(size())
+    .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('libs', ()=> {
@@ -140,7 +149,8 @@ gulp.task('less', function () {
 /** 默认启动*/
 gulp.task('default', ['dev']);
 
+/**开发模式*/
 gulp.task('dev', ['build', 'watch', 'server']);
 
 /**build*/
-gulp.task("build", ['clean', 'img', 'libs', 'css', 'less', 'html', 'bundle']);
+gulp.task("build", ['clean', 'img', 'libs', 'css', 'html', 'bundle']);

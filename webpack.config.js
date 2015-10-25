@@ -12,8 +12,7 @@ module.exports = {
   watch:true,
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: "/assets/",
-    filename: "scripts/bundle.js"
+    filename: "js/bundle.js"
   },
   cache: DEBUG,
   debug: DEBUG,
