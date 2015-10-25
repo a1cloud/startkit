@@ -4,17 +4,20 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var DEBUG = !argv.release;
 
-module.exports = [{
-  entry: {
-    bundle: './src/app/app.module.js'
-  },
+module.exports = {
+  //entry: './src/app/app.module.js',
+  entry:[
+    './src/app/app.js'
+  ],
+  watch:true,
   output: {
-    path: 'build/public/scripts',
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/assets/",
+    filename: "scripts/bundle.js"
   },
   cache: DEBUG,
   debug: DEBUG,
-  devtool: DEBUG ? '#inline-source-map' : false,
+  devtool: DEBUG ? 'sourcemap' : false,
   stats: {
     colors: true,
     reasons: DEBUG
@@ -45,4 +48,4 @@ module.exports = [{
       }
     ]
   }
-}];
+};
