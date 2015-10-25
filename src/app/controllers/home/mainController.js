@@ -3,7 +3,7 @@
  */
 export default class HomeController {
   constructor(UserService) {
-    this.name = 'World';
+    this.name = 'Detail';
     this.userService= UserService;
   }
 

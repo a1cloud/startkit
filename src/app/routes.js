@@ -1,8 +1,8 @@
 export default function routes($stateProvider,$urlRouterProvider) {
-  $urlRouterProvider.otherwise("/404");
+  $urlRouterProvider.otherwise("/");
   $stateProvider
     .state('main', {
-      url: '',
+      url: '/',
       template: require('./views/home/main.html'),
       controller: 'home.main',
       controllerAs: 'vm'
