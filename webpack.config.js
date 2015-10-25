@@ -27,8 +27,7 @@ module.exports = {
   externals: [
     {
       'lodash': '_',
-      'angular': 'angular',
-      'angualr-ui': 'angular-ui'
+      'angular': 'angular'
     }
   ],
   plugins: [
