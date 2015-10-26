@@ -13,6 +13,10 @@ cd startkit
 
 npm i
 
+install gulp
+
+npm i gulp -g
+
 gulp // 默认启动开发模式
 gulp build --release //生成环境打包
 ```
