@@ -10,6 +10,7 @@ import directives from './directives';
  */
 angular.module('app', [
   uiRouter,
+  'ngMaterial',
   services,
   controllers,
   directives

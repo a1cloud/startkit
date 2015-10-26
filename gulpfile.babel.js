@@ -101,9 +101,8 @@ gulp.task('img', ()=> {
 });
 
 gulp.task('css', ()=> {
-  return gulp.src(['src/assets/css/**/*.*'])
+  return gulp.src(['src/assets/css/**/*.css'])
     .pipe(minifyCss())
-    .pipe(less())
     .pipe(size())
     .pipe(gulp.dest('build/css'));
 });
@@ -146,4 +145,4 @@ gulp.task('default', ['dev']);
 gulp.task('dev', ['build', 'watch', 'server']);
 
 /**build*/
-gulp.task("build", ['clean', 'img', 'css', 'html', 'bundle']);
+gulp.task("build", ['clean', 'img', 'css','less','js', 'html', 'bundle']);
