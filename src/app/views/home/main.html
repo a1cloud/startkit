@@ -3,8 +3,12 @@
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="one">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Tab One</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+          <form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
+            <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+              <md-button type="submit" class="md-raised md-primary" ng-disabled="vm.form.$invalid">Submit</md-button>
+              <md-button type="button" class="md-raised" ng-click="vm.options.resetModel()">Reset</md-button>
+            </formly-form>
+            </form>
         </md-content>
       </md-tab>
       <md-tab label="two">

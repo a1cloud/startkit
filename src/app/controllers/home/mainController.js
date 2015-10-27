@@ -4,88 +4,62 @@
 export default class HomeController {
 
   constructor(UserService) {
-    this.name = 'Detail';
-    this.userService= UserService;
-    var imagePath = 'img/list/60.jpeg';
-    this.messages = [
+    this.userService=UserService;
+    this.name='Main';
+    this.fields = [
       {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
+        key: 'text',
+        type: 'input',
+        templateOptions: {
+          label: '标题'
+        }
       },
       {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
+        elementAttributes: {
+          layout: 'row',
+          'layout-sm': 'column'
+        },
+        fieldGroup: [
+          {
+            key: 'firstName',
+            elementAttributes: {
+              flex: ''
+            },
+            type: 'input',
+            templateOptions: {
+              label: '姓'
+            }
+          },
+          {
+            key: 'lastName',
+            elementAttributes: {
+              flex: ''
+            },
+            type: 'input',
+            templateOptions: {
+              label: '名'
+            }
+          }
+        ]
       },
       {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
+        key: 'knowsMuffinMan',
+        type: 'checkbox',
+        templateOptions: {
+          label: 'Do you know the muffin man?'
+        }
       }
     ];
+
+    this.model = {};
+    this.options = {};
+
+    this.originalFields = angular.copy(this.fields);
+  }
+
+  onSubmit() {
+    this.options.updateInitialValue();
+    alert(JSON.stringify(this.model), null, 2);
   }
 
   changeName() {
