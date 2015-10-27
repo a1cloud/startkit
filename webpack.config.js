@@ -35,7 +35,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin()
   ].concat(DEBUG ? [] : [
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+      }),
       new webpack.optimize.AggressiveMergingPlugin()
     ]),
   module: {

@@ -11,6 +11,7 @@ import directives from './directives';
 angular.module('app', [
   uiRouter,
   'ngMaterial',
+  'formly',
   services,
   controllers,
   directives

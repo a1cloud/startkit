@@ -90,27 +90,28 @@ gulp.task('watch', ()=> {
 
 gulp.task('html', ()=> {
   return gulp.src(['src/index.html'])
-    .pipe(size())
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+    .pipe(size({title: 'html'}));
 });
 
 gulp.task('img', ()=> {
   return gulp.src(['src/assets/img/**/*.*'])
-    .pipe(size())
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('build/img'))
+    .pipe(size({title: 'css'}));
 });
 
 gulp.task('css', ()=> {
   return gulp.src(['src/assets/css/**/*.css'])
     .pipe(minifyCss())
-    .pipe(size())
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('build/css'))
+    .pipe(size({title: 'css'}));
 });
 
 gulp.task('js', ()=> {
   return gulp.src(['src/assets/js/**/*.*'])
-    .pipe(size())
-    .pipe(gulp.dest('build/js'));
+    .pipe(plumber())
+    .pipe(gulp.dest('build/js'))
+    .pipe(size({title: 'js'}));
 });
 
 //style less
@@ -132,9 +133,9 @@ gulp.task('less', function () {
         'bb >= 10'
       ]
     }))
-    .pipe(size())
     .pipe(minifyCss())
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('build/css'))
+    .pipe(size({title:'less'}));
 });
 
 
@@ -145,4 +146,4 @@ gulp.task('default', ['dev']);
 gulp.task('dev', ['build', 'watch', 'server']);
 
 /**build*/
-gulp.task("build", ['clean', 'img', 'css','less','js', 'html', 'bundle']);
+gulp.task("build", ['clean', 'img', 'css', 'less', 'js', 'html', 'bundle']);
